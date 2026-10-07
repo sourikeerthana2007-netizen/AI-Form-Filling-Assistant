@@ -1,0 +1,7 @@
+venv/
+.env
+profile.json
+profile.enc
+uploads/
+filled_forms/
+__pycache__/

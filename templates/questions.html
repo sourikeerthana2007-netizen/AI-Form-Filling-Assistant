@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Smart Form Fill AI</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f6f8;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: auto;
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 13px 25px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🤖 Just a Few Questions</h1>
+
+    <p>
+        I already have some information from your profile.
+        I only need the following new information:
+    </p>
+
+    <form action="/answer-questions" method="POST">
+
+        <input
+            type="hidden"
+            name="filename"
+            value="{{ filename }}"
+        >
+
+        {% for field in fields %}
+
+            {% if field == "source" %}
+
+                <label>Where did you hear about this event?</label>
+
+                <select name="source" required>
+                    <option value="">Select</option>
+                    <option>Facebook</option>
+                    <option>Youtube</option>
+                    <option>Instagram</option>
+                    <option>Twitter</option>
+                    <option>Other</option>
+                </select>
+
+            {% elif field == "tickets" %}
+
+                <label>Number of tickets</label>
+                <input type="number" name="tickets" min="1" required>
+
+            {% elif field == "payment" %}
+
+                <label>Payment method</label>
+
+                <select name="payment" required>
+                    <option value="">Select</option>
+                    <option>Credit Card</option>
+                    <option>Debit Card</option>
+                    <option>Cash</option>
+                    <option>Check</option>
+                </select>
+
+            {% elif field == "agreement" %}
+
+                <label>Do you agree to the event terms?</label>
+
+                <select name="agreement" required>
+                    <option value="">Select</option>
+                    <option value="yes">Yes, I understand</option>
+                    <option value="no">No</option>
+                </select>
+
+            {% elif field == "date_signed" %}
+
+                <label>Date signed</label>
+                <input type="text"
+                       name="date_signed"
+                       placeholder="MM/DD/YYYY"
+                       required>
+
+            {% endif %}
+
+        {% endfor %}
+
+        <button type="submit">
+            ✅ Fill My Form
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Form Completed</title>
+
+    <style>
+
+        body {
+            font-family: Arial;
+            background: #f4f6f8;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+        }
+
+        img {
+            max-width: 100%;
+            margin-top: 25px;
+            border: 1px solid #ddd;
+        }
+
+        .button {
+            display: inline-block;
+            margin: 20px 10px;
+            padding: 13px 25px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🎉 Your Form Is Ready!</h1>
+
+    <p>
+        Smart Form Fill used your profile and the answers you provided.
+    </p>
+
+    <img src="/filled_forms/{{ filename }}">
+
+    <br>
+
+    <a class="button"
+       href="/download/{{ filename }}">
+        ⬇️ Download Filled Form
+    </a>
+
+    <a class="button" href="/">
+        ← Back Home
+    </a>
+
+</div>
+
+</body>
+
+</html>

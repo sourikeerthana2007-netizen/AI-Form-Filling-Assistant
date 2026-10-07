@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Smart Form Fill AI</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            margin: 0;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+        }
+
+        .section {
+            margin-top: 35px;
+            padding: 25px;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 7px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            font-size: 15px;
+        }
+
+        button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 13px 25px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        .upload {
+            text-align: center;
+            padding: 30px;
+            border: 2px dashed #aaa;
+            border-radius: 10px;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+    <h1>🤖 Smart Form Fill AI</h1>
+
+    <p class="subtitle">
+        Save your information once and let AI fill forms for you.
+    </p>
+
+
+    <!-- PROFILE -->
+
+    <div class="section">
+
+        <h2>👤 My Profile</h2>
+
+        <p>
+            Enter your information once. We will reuse it for future forms.
+        </p>
+
+        <form action="/save-profile" method="POST">
+
+            <label>Full Name</label>
+            <input
+                type="text"
+                name="full_name"
+                value="{{ profile.get('full_name', '') }}"
+            >
+
+            <label>Date of Birth</label>
+            <input
+                type="text"
+                name="dob"
+                placeholder="DD/MM/YYYY"
+                value="{{ profile.get('dob', '') }}"
+            >
+
+            <label>Gender</label>
+            <input
+                type="text"
+                name="gender"
+                value="{{ profile.get('gender', '') }}"
+            >
+
+            <label>Phone Number</label>
+            <input
+                type="text"
+                name="phone"
+                value="{{ profile.get('phone', '') }}"
+            >
+
+            <label>Email</label>
+            <input
+                type="email"
+                name="email"
+                value="{{ profile.get('email', '') }}"
+            >
+
+            <label>Address</label>
+            <textarea name="address">{{ profile.get('address', '') }}</textarea>
+
+            <button type="submit">
+                Save Profile
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <!-- UPLOAD -->
+
+    <div class="section">
+
+        <h2>📄 Upload Form</h2>
+
+        <div class="upload">
+
+            <form
+                action="/upload"
+                method="POST"
+                enctype="multipart/form-data"
+            >
+
+                <p>Select your form:</p>
+
+                <input
+                    type="file"
+                    name="file"
+                    accept=".png,.jpg,.jpeg"
+                    required
+                >
+
+                <br>
+
+                <button type="submit">
+                    🔍 Scan & Fill Form
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
